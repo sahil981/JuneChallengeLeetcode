@@ -1,3 +1,4 @@
+//C++ solution
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
@@ -12,4 +13,36 @@ public:
         return root;
             
     }
+};
+
+
+
+
+//Javascript Solution
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var invertTree = function(root) {
+        
+    if(root){
+        invertTree(root.left);
+        invertTree(root.right);
+        
+        let temp = new TreeNode();
+        temp = root.right;
+        root.right = root.left;
+        root.left = temp;
+    }
+    
+    return root;
+    
 };
